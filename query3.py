@@ -30,7 +30,7 @@ class query3:
         items = soup.findAll("div", {'class':'sh-dgr__content'})
         for item in items:  
             price = item.find("span", {'class': 'kHxwFf'}).span.span.text
-            seller = item.find('a', {'class':'a3H7pd r29r0b shntl'}).text
+            seller = item.find('a', attrs={'class':'a3H7pd r29r0b shntl'}).text
             name = item.find('h4', attrs={'class': 'A2sOrd'}).text
             # link = item.find("div", {'class':'sh-dgr__thumbnail'}).a.get('href')
             starsDiv = item.find('div', attrs={'class': '_OBj'})
