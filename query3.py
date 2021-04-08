@@ -31,7 +31,7 @@ class query3:
         for item in items:  
             price = item.find("span", {'class': 'kHxwFf'}).span.span.text
             price = price[1:]
-            seller = item.find('a', attrs={'class':'a3H7pd r29r0b shntl'}).text
+            seller = item.find('a').text
             name = item.find('h4', attrs={'class': 'A2sOrd'}).text
             # link = item.find("div", {'class':'sh-dgr__thumbnail'}).a.get('href')
             starsDiv = item.find('div', attrs={'class': '_OBj'})
