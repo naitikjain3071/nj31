@@ -13,7 +13,7 @@ class query3:
     def make_request(searchTerm):
         assert isinstance(searchTerm, str), 'Search term must be a string'
         escaped_search_term = searchTerm.replace(' ', '+')
-        escaped_search_term+='+agriculture'
+        escaped_search_term+='+agriculture+in+india'
         limit = 3
         google_url = 'https://www.google.com/search?tbm=shop&q={}&num={}&tbs=vw:g'.format(escaped_search_term, limit)
         response = requests.get(google_url, headers={'User-Agent': random.choice(USER_AGENTS)})
@@ -30,7 +30,7 @@ class query3:
         items = soup.findAll("div", {'class':'sh-dgr__content'})
         for item in items:  
             price = item.find("span", {'class': 'kHxwFf'}).span.span.text
-            seller = item.find('a').text
+            seller = item.find('a', {'class':'a3H7pd r29r0b shntl'}).text
             name = item.find('h4', attrs={'class': 'A2sOrd'}).text
             # link = item.find("div", {'class':'sh-dgr__thumbnail'}).a.get('href')
             starsDiv = item.find('div', attrs={'class': '_OBj'})
