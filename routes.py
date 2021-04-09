@@ -106,7 +106,7 @@ def scrape():
             msg = {"status": {"type": "failure", "message": "Missing Data"}}
         return jsonify(msg)
 
-    elif(("retailer" in sentence or "retailers" in sentence) and ("which" in sentence or "who" in sentence)):
+    elif("retailers" in sentence and ("which" in sentence or "who" in sentence)):
         sentence = change(sentence)
         
         html = query4.make_request(sentence)
