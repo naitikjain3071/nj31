@@ -206,36 +206,37 @@ def indiamart1():
     else:
         print("No data retrieve... maybe google ban :'( or try another search")
 
-THIS_FOLDER = os.path.abspath(os.path.dirname(__file__))
-my_file = os.path.join(THIS_FOLDER, 'final97.h5')
-print(my_file)
 
-global sess
-sess = tf.compat.v1.Session()
-tf.compat.v1.keras.backend.set_session(sess)
-global model
-model = load_model(my_file)
-global graph
-graph = tf.compat.v1.get_default_graph()
-THIS_FOLDER = os.path.abspath(os.path.dirname(__file__))
-my_file = os.path.join(THIS_FOLDER, 'plant_disease_label_transform (2).pkl')
-image_labels = pickle.load(open(my_file, 'rb'))
-print("Hey")
-EPOCHS = 25
-STEPS = 100
-LR = 1e-3
-BATCH_SIZE = 32
-WIDTH = 128
-HEIGHT = 128
-DEPTH = 3
-DEFAULT_IMAGE_SIZE = tuple((128, 128))
-print(" * Model loaded!")
 
 @app.route("/predict", methods=["POST"])
 def prediction():
 
+    THIS_FOLDER = os.path.abspath(os.path.dirname(__file__))
+    my_file = os.path.join(THIS_FOLDER, 'final97.h5')
+    #print(my_file)
+
+    global sess
+    sess = tf.compat.v1.Session()
+    tf.compat.v1.keras.backend.set_session(sess)
+    global model
+    model = load_model(my_file)
+    global graph
+    graph = tf.compat.v1.get_default_graph()
+    THIS_FOLDER = os.path.abspath(os.path.dirname(__file__))
+    my_file = os.path.join(THIS_FOLDER, 'plant_disease_label_transform (2).pkl')
+    image_labels = pickle.load(open(my_file, 'rb'))
+    print("Hey")
+    EPOCHS = 25
+    STEPS = 100
+    LR = 1e-3
+    BATCH_SIZE = 32
+    WIDTH = 128
+    HEIGHT = 128
+    DEPTH = 3
+    DEFAULT_IMAGE_SIZE = tuple((128, 128))
+    print(" * Model loaded!")
     file = request.files['file']
-    print(file)
+    #print(file)
     file.save(r'test.jpg')
     # Step 1
     # try:
@@ -270,8 +271,8 @@ def prediction():
     #print((image_labels.classes_[result][0]))
     z=image_labels.classes_[result][0]
     msg={'class':z}
-    print(msg)
+    #print(msg)
     os.remove(r'test.jpg')
-    print(np_image)
-    print(np_image.shape)
+    #print(np_image)
+    #print(np_image.shape)
     return jsonify(msg)
