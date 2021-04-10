@@ -15,9 +15,10 @@ import smtplib
 import os
 import flask
 import io
-import scikit-image as skimage
+import scikit-image
 from skimage.transform import resize
-import Image
+#import Image
+import Pillow
 from PIL import Image
 import scikit-learn
 import base64
