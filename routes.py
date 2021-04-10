@@ -15,9 +15,12 @@ import smtplib
 import os
 import flask
 import io
+import scikit-image as skimage
 from skimage.transform import resize
-
+import Image
 from PIL import Image
+import keras
+import scikit-learn
 import base64
 import matplotlib.pyplot as plt
 import numpy as np
